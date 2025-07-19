@@ -10,7 +10,7 @@ def get_num_words():
     book_contents = get_book_text()
     for word in book_contents.split():
         num_words += 1
-    print(f"{num_words} words found in the document")
+    return num_words
 
 def get_num_letters():
     letter_dict = {}
@@ -20,4 +20,15 @@ def get_num_letters():
             letter_dict[letters] += 1
         else:
             letter_dict[letters] = 1
-    print(letter_dict)    
+    return letter_dict
+
+def sort_dict(keys):
+    new_sorted_dict = []
+    for key in keys:
+        small_dict = {"char": key, "num": keys[key]}
+        new_sorted_dict.append(small_dict)
+    new_sorted_dict.sort(key=sort_on, reverse=True)
+    return new_sorted_dict
+
+def sort_on(items):
+    return items["num"]
